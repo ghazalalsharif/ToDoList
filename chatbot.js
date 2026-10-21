@@ -6,8 +6,7 @@ const typing_form  = document.querySelector(".typing_form");
 const chat_list    = document.querySelector(".chat_list");
 const typing_input = document.querySelector(".typing_input");
 
-const API_KEY = "AIzaSyDL1iEPjpZeG3KGTGe7YUBxjJsHsREHaKg";
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+// Public demo: general AI responses require a separately configured secure backend.
 
 let userMessage = "";
 
@@ -218,48 +217,8 @@ const showTypingEffect = (text, textElement, div) => {
 //  GENERATE API RESPONSE
 // ============================================================
 const generateAPIResponse = async (div) => {
-    const textElement = div.querySelector(".text");
-
-    try {
-        const response = await fetch(API_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                contents: [{
-                    role: "user",
-                    parts: [{ text: userMessage }]
-                }]
-            })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            const errMsg = data?.error?.message || "خطأ غير معروف";
-            console.error("API Error:", errMsg);
-            textElement.innerHTML = `❌ ${errMsg}`;
-            textElement.style.color = "#ef4444";
-            return;
-        }
-
-        if (!data.candidates || data.candidates.length === 0) {
-            console.error("No candidates:", data);
-            textElement.innerHTML = "⚠️ لم يتم الحصول على رد، حاول مجدداً.";
-            textElement.style.color = "#f59e0b";
-            return;
-        }
-
-        const apiResponse = data.candidates[0]?.content?.parts[0]?.text
-            .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-
-        showTypingEffect(apiResponse, textElement, div);
-
-    } catch (error) {
-        console.error("Fetch Error:", error.message);
-        textElement.innerHTML = `❌ ${error.message}`;
-        textElement.style.color = "#ef4444";
-        div.classList.remove("loading");
-    }
+    div.querySelector('.text').textContent = 'هذه نسخة تجريبية: أوامر المهام تعمل محليًا. الردود العامة بالذكاء الاصطناعي غير مفعلة في النسخة العامة.';
+    div.classList.remove('loading');
 };
 
 // ============================================================

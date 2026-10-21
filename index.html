@@ -49,12 +49,28 @@
     <button class="btn-primary" onclick="handleLogin()">تسجيل الدخول</button>
 
     <div class="divider">أو</div>
+    <button class="btn-primary" type="button" onclick="startDemo()">جرّب الآن بدون تسجيل · Try demo</button>
+    <p class="subtitle">نسخة تعليمية ببيانات تجريبية محفوظة في متصفحك فقط. لا تستخدم بيانات أو كلمات مرور حقيقية.</p>
 
     <p class="register-link">ليس لديك حساب؟ <a href="register.html">إنشاء حساب</a></p>
 </div>
 
 <script src="db.js"></script>
 <script>
+    function startDemo() {
+        const email = 'visitor@example.invalid';
+        const password = 'public-demo-only';
+        DB.register({name: 'Demo Visitor', email, password});
+        const result = DB.login(email, password);
+        if (!result.success) { showError(result.error); return; }
+        if (!DB.getTasks().length) {
+            DB.saveTasks([
+                {id: 1, name: 'Explore the task dashboard', desc: 'Sample task', deadline: new Date().toISOString().split('T')[0], period: 'today', priority: 'high', done: false, date: Date.now(), attachments: []},
+                {id: 2, name: 'Try the local task assistant', desc: 'Try: add task: Review portfolio', deadline: '', period: 'week', priority: 'medium', done: false, date: Date.now(), attachments: []}
+            ]);
+        }
+        window.location.href = 'home.html';
+    }
     // Redirect if already logged in
     if (DB.isLoggedIn()) window.location.href = 'home.html';
 
