@@ -2,13 +2,20 @@
 
 An individual front-end project by **Ghazal Alsharif**, built with HTML, CSS and JavaScript to practice task management and browser-based persistence.
 
+
+[Try the live demo](https://ghazalalsharif.github.io/ToDoList/) · [Portfolio](https://ghazalalsharif.github.io/Portfolio-Website/)
+
+![Task dashboard with sample data](https://ghazalalsharif.github.io/Portfolio-Website/assets/projects/todo.png)
+
+Click **Try demo** on the sign-in page to explore without registering. Data stays in your browser. The public demo supports local task commands; general AI replies are disabled until a secure backend is configured.
+
 ## Features
 
 - Manage tasks with priorities and deadlines.
 - View tasks in a calendar and use a team-task interface.
 - Explore registration, sign-in and profile screens.
 - Save application data in browser localStorage.
-- Chat interface with a Gemini API integration.
+- Local task-command assistant; the original project explored Gemini API integration.
 
 ## Run locally
 
@@ -27,7 +34,7 @@ Download this repository and serve its folder with a local static web server, su
 
 ## Project scope
 
-This is a learning prototype. Browser storage and client-side authentication are not suitable for real accounts or sensitive information, and team screens do not constitute a deployed multi-user backend. The chat feature depends on an external API and is not guaranteed to work without configuration. API credentials should be stored on a backend, never in published JavaScript.
+This is a learning prototype. Browser storage and client-side authentication are not suitable for real accounts or sensitive information, and team screens do not constitute a deployed multi-user backend. General AI replies are disabled in the public demo. API credentials should be stored on a backend, never in published JavaScript.
 
 ## Author
 
