@@ -66,7 +66,7 @@
         if (!DB.getTasks().length) {
             DB.saveTasks([
                 {id: 1, name: 'Explore the task dashboard', desc: 'Sample task', deadline: new Date().toISOString().split('T')[0], period: 'today', priority: 'high', done: false, date: Date.now(), attachments: []},
-                {id: 2, name: 'Try the local task assistant', desc: 'Try: add task: Review portfolio', deadline: '', period: 'week', priority: 'medium', done: false, date: Date.now(), attachments: []}
+                {id: 2, name: 'Try the local task assistant', desc: 'Try: add task: Review portfolio', deadline: new Date(Date.now() + 3 * 86400000).toISOString().split('T')[0], period: 'week', priority: 'medium', done: false, date: Date.now(), attachments: []}
             ]);
         }
         window.location.href = 'home.html';
